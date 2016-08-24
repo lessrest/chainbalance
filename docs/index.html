@@ -39,8 +39,8 @@ form.onsubmit = function(e) {
   )
   req.setRequestHeader("content-type", "application/json")
   req.send(JSON.stringify({
-    "email-address": email,
-    "account-address": address
+    "emailAddress": email,
+    "accountAddress": address
   }))
 }
 </script>    
