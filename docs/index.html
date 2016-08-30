@@ -4,26 +4,48 @@
 <title>Blockchain Balance Monitor</title>
 <style>
 * { box-sizing: border-box; }
-html, input, button { font: 22px/1.4 "times new roman"; }
-body { max-width: 32rem; margin: 0 auto; padding: 1rem; text-align: center; }
-input { font-family: courier, monospace; }
+html, input, button { font: 22px/1.4 georgia, "times new roman"; }
+h1, h2 { font-family: helvetica, sans-serif; color: #333; }
+h1, h2 { letter-spacing: -.06em; }
+* { margin: .5rem 0; }
+input { margin: 0rem 0; }
+form { margin: 1.5rem 0; }
+body { max-width: 29rem; margin: 0 auto; padding: 1rem; text-align: center; }
+input { font-family: courier, monospace; font-weight: bold; }
 input { width: 100%; border: 1px solid #999; padding: .25rem .25rem 0; }
-button { padding: .25rem 1rem; margin: 1rem 0; }
+button { padding: .25rem 1rem; }
 button { cursor: pointer; transition: 0.25s ease all; }
-button.blocked { pointer-events: none; }
-i { font-style: normal; color: #666; }
+footer { color: #666; }
 a { color: inherit; text-decoration: none; border-bottom: 1px solid currentcolor; }
+a { font-family: helvetica, sans-serif; font-size: 90%; }
 </style>
+<h1>chainbalance.org</h1>
+<h2>Monitor Ethereum account balance</h2>
+
+<p>Fill the form, verify your email, and get notifications.
+
 <form id=form>
-<h1>Balance Monitor</h2>
-<h2>Ethereum main net</h2>
 <p><input name=email placeholder="me@example.com" autofocus/>
 <p><input name=address placeholder="0xfB6916095ca1df60bB79Ce92cE3Ea74c37c5d359"/>
 <p><input name=alias placeholder="Alias, e.g., 'Ethereum Foundation Tip Jar'"/>
 <p><button id=button>Notify me when balance changes</button>
-<p><i>All warranties disclaimed; provided as is.</i>
-<p><i>Ethereum data from <a href="https://etherscan.io">etherscan.io</a>.</i>
-<p><i>Powered by AWS Lambda.</i>
+</form>
+
+<footer>
+
+<p>
+All warranties disclaimed; provided as is.
+
+<p>
+Made with prudence by <a href="https://github.com/mbrock">@mbrock</a> in Riga.
+
+<p>
+Powered by <a href="https://aws.amazon.com/lambda/details/">AWS Lambda</a>
+infrastructure.
+
+<p>
+Blockchain data from <a href="https://etherscan.io">etherscan.io</a>&rsquo;s API.
+
 <script>
 form.onsubmit = function(e) {
   e.preventDefault()
@@ -32,7 +54,7 @@ form.onsubmit = function(e) {
   var alias = form.elements["alias"].value
 
   if (!email.match(/^.+@.+$/) || !address.match(/^0x[0-9a-zA-Z]{40}$/)) {
-    alert("Doesn't look right.")
+    alert("That doesn't look right.")
     return
   }
 
