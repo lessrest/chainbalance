@@ -39,11 +39,11 @@ form.onsubmit = function(e) {
   var req = new XMLHttpRequest()
   req.onload = function() {
     alert("OK, sending confirmation mail.")
-    button.classList += "blocked";
-    setTimeout(function() { button.classList.remove("blocked") }, 1000)
+    button.disabled = false
   }
   req.onerror = function() {
     alert("Something went wrong.")
+    button.disabled = false
   }
   req.open(
     "POST",
@@ -55,5 +55,7 @@ form.onsubmit = function(e) {
     "accountAddress": address,
     "accountAlias": alias
   }))
+  
+  button.disabled = true
 }
 </script>    
