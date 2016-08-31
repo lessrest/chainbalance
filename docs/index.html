@@ -63,7 +63,11 @@ form.onsubmit = function(e) {
 
   var req = new XMLHttpRequest()
   req.onload = function() {
-    alert("OK, sending confirmation mail.")
+    var result = JSON.parse(this.responseText)
+    alert(result.error
+      ? result.error
+      : "OK, sending confirmation mail."
+    )
     button.disabled = false
   }
   req.onerror = function() {
